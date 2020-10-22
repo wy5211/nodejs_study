@@ -31,3 +31,8 @@
 ### demo06
 
 - 路由模块封装
+- ejs 简单使用
+
+### demo07
+
+- 使用 nodejs 封装 express 中的路由
