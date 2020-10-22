@@ -4,6 +4,8 @@ const ejs = require('ejs');
 
 http.createServer(app).listen(3000);
 
+app.static('public');
+
 app.get('/', (req, res) => {
   res.send('首页');
 });
