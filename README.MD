@@ -36,3 +36,4 @@
 ### demo07
 
 - 使用 nodejs 封装 express 中的路由
+- 静态资源统一封装
