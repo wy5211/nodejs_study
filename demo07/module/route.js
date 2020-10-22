@@ -28,7 +28,6 @@ const service = () => {
         req.on('data', (chunk) => (postData += chunk));
         req.on('end', () => {
           req.body = postData;
-          // res.end(postData);
           G._post[pathname](req, res);
         });
       }
