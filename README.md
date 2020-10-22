@@ -1,5 +1,5 @@
-# nodejs_study
-个人nodejs学习笔记
+时间：2020 年 10 月开始
+王阳的 nodejs 笔记
 
 ### demo01
 
@@ -23,3 +23,11 @@
 
 - 搭建 web 静态服务器
 - 同步读取文件 fs.readFileSync()
+
+### demo05
+
+- 引入路由
+
+### demo06
+
+- 路由模块封装
