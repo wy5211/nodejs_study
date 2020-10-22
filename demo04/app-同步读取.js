@@ -13,21 +13,18 @@ http
     let extname = path.extname(pathname);
 
     if (pathname !== '/favicon.ico') {
-      fs.readFile(`static/${pathname}`, async (err, data) => {
+      fs.readFile(`static/${pathname}`, (err, data) => {
+        let mime = common.asyncMIMEType(extname);
         if (err) {
           res.writeHead(404, {
-            'Content-Type': `${await common.asyncMIMEType(
-              extname,
-            )};charset=utf-8`,
+            'Content-Type': `${mime};charset=utf-8`,
           });
           res.write('404 页面不存在');
           res.end();
           return;
         }
         res.writeHead(200, {
-          'Content-Type': `${await common.asyncMIMEType(
-            extname,
-          )};charset=utf-8`,
+          'Content-Type': `${mime};charset=utf-8`,
         });
         res.write(data);
         res.end();

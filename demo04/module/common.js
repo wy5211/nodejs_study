@@ -13,14 +13,21 @@ exports.MIMEType = (pathname) => {
 const fs = require('fs');
 
 // 读取文件操作是异步的
+// exports.asyncMIMEType = (pathname) => {
+//   return new Promise((resove, reject) => {
+//     fs.readFile('./data/mime.json', (err, data) => {
+//       if (err) {
+//         reject(err);
+//       }
+//       let mimeObjg = JSON.parse(data.toString());
+//       resove(mimeObjg[pathname]);
+//     });
+//   });
+// };
+
+// 同步读取文件
 exports.asyncMIMEType = (pathname) => {
-  return new Promise((resove, reject) => {
-    fs.readFile('./data/mime.json', (err, data) => {
-      if (err) {
-        reject(err);
-      }
-      let mimeObjg = JSON.parse(data.toString());
-      resove(mimeObjg[pathname]);
-    });
-  });
+  let data = fs.readFileSync('./data/mime.json');
+  let mimeObjg = JSON.parse(data.toString());
+  return mimeObjg[pathname];
 };
