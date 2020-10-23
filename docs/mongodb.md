@@ -83,4 +83,10 @@
 
 ### mongodb 聚合管道
 
+- 用于表的关联查询和数据统计
+
 ![聚合管道](./img/mongodb01.jpg)
+
+### mongodb 数据到处备份
+
+![备份导入](./img/mongodb02.jpg)
