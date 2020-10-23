@@ -83,4 +83,4 @@
 
 ### mongodb 聚合管道
 
-![聚合管道](docs/img/mongodb01.jpg)
+![聚合管道](./docs/img/mongodb01.jpg)
