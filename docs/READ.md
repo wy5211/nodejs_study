@@ -40,3 +40,7 @@
 ## mongodb 命令
 
 - 详见 mongodb.md
+
+### demo08
+
+- nodejs 连接 mongodb 实现增删改差
