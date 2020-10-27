@@ -44,3 +44,8 @@
 ### demo08
 
 - nodejs 连接 mongodb 实现增删改差
+
+### demo09
+
+- nodejs + mongodb 模拟数据库的查询增加
+- post 请求的数据挂在了 req.body 上，封装在了 module/rout.js 文件中

@@ -2,6 +2,7 @@ const url = require('url');
 const fs = require('fs');
 const path = require('path');
 
+// 根据文件后缀名获取文件类型
 const asyncMIMEType = (pathname) => {
   let data = fs.readFileSync('./data/mime.json');
   let mimeObjg = JSON.parse(data.toString());
