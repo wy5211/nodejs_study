@@ -1,9 +1,9 @@
-const url = require("url");
-const fs = require("fs");
-const path = require("path");
+const url = require('url');
+const fs = require('fs');
+const path = require('path');
 
 const asyncMIMEType = (pathname) => {
-  let data = fs.readFileSync("./data/mime.json");
+  let data = fs.readFileSync('./data/mime.json');
   let mimeObjg = JSON.parse(data.toString());
   return mimeObjg[pathname];
 };
@@ -11,7 +11,7 @@ const asyncMIMEType = (pathname) => {
 const changeRes = (res) => {
   res.send = (data) => {
     res.writeHead(200, {
-      "Content-Type": "text/html;charset=utf-8",
+      'Content-Type': 'text/html;charset=utf-8',
     });
     res.end(data);
   };
@@ -19,25 +19,22 @@ const changeRes = (res) => {
 
 const initStatic = (req, res, staticPath) => {
   let pathname = url.parse(req.url).pathname;
-  // console.log('staticPath', staticPath, pathname);
-  pathname = pathname === "/" ? "index.html" : pathname;
+
+  pathname = pathname === '/' ? '/index.html' : pathname;
   // 获取后缀名
   let extname = path.extname(pathname);
-
-  if (pathname !== "/favicon.ico") {
-    try {
-      let data = fs.readFileSync(`./${staticPath}/${pathname}`);
-      if (data) {
-        let mime = asyncMIMEType(extname);
-        res.writeHead(200, {
-          "Content-Type": `${mime};charset=utf-8`,
-        });
-        res.write(data);
-        res.end();
-      }
-    } catch (error) {
-      console.log(error);
+  try {
+    let data = fs.readFileSync(`./${staticPath}${pathname}`);
+    if (data) {
+      let mime = asyncMIMEType(extname);
+      res.writeHead(200, {
+        'Content-Type': `${mime};charset=utf-8`,
+      });
+      res.write(data);
+      res.end();
     }
+  } catch (error) {
+    // console.log(`${staticPath}${pathname} 不存在`);
   }
 };
 
@@ -45,7 +42,7 @@ const service = () => {
   let G = {
     _get: {},
     _post: {},
-    static: "satic",
+    static: 'satic',
   };
 
   let app = (req, res) => {
@@ -55,22 +52,22 @@ const service = () => {
     let method = req.method.toLowerCase();
 
     if (G[`_${method}`][pathname]) {
-      if (method === "get") {
+      if (method === 'get') {
         G._get[pathname](req, res);
       }
-      if (method === "post") {
-        let postData = "";
-        req.on("data", (chunk) => (postData += chunk));
-        req.on("end", () => {
+      if (method === 'post') {
+        let postData = '';
+        req.on('data', (chunk) => (postData += chunk));
+        req.on('end', () => {
           req.body = postData;
           G._post[pathname](req, res);
         });
       }
     } else {
       res.writeHead(200, {
-        "Content-Type": `text/html;charset=utf-8`,
+        'Content-Type': `text/html;charset=utf-8`,
       });
-      res.end("页面不存在");
+      res.end('页面不存在');
     }
   };
 
