@@ -18,3 +18,19 @@
 - 错误中间件 - 用于错误处理
 - 内置中间件 - eg 统一资源配置
 - 第三方中间件 - eg body-parser，用来获取 post 传值（demo04）
+
+### demo04
+
+- body-parser 第三方中间件,用来方便获取 post 传值,可通过 req.body 来获取 post 传值
+
+### demo05
+
+- cookie-parser 第三方中间件,方便在服务端设置和获取 cookie
+
+  > cookie 加密
+
+  ```js
+  1. app.use(cookieParser('设置加密字符串'));
+  2. 设置cookie res.cookie("username", "王阳", { signed: true });
+  3. 获取cookie req.signedCookies;
+  ```
