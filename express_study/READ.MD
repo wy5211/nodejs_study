@@ -27,10 +27,10 @@
 
 - cookie-parser 第三方中间件,方便在服务端设置和获取 cookie
 
-  > cookie 加密
+> cookie 加密
 
-  ```js
+```js
   1. app.use(cookieParser('设置加密字符串'));
   2. 设置cookie res.cookie("username", "王阳", { signed: true });
   3. 获取cookie req.signedCookies;
-  ```
+```

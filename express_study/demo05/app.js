@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const cookieParser = require("cookie-parser");
-app.use(cookieParser());
+app.use(cookieParser('screctStr')); // cookie 加密需要传入加密的参数
 
 app.get("/", (req, res) => {
   /*
@@ -15,8 +15,8 @@ app.get("/", (req, res) => {
     encode?: (val: string) => string; 
     sameSite?: boolean | 'lax' | 'strict' | 'none';
    */
-  // res.cookie("username", "wangyang", { maxAge: 1000 * 10 });
-  res.cookie("username", "王阳", { signed: true });
+  // res.cookie("username", "wangyang", { maxAge: 1000 * 10 }); // 设置过期时长
+  res.cookie("username", "王阳", { signed: true, domain: '.wangyang.com' }); // 是否加密 二级域名下有效
   res.send("home page");
 });
 
@@ -24,7 +24,10 @@ app.get("/cart", (req, res) => {
   // 直接通过req.cookies 获取cookie
   // const { username } = req.cookies;
 
+  // 设置了加密的通过 req.signedCookies 获取
   const { username } = req.signedCookies;
+
+  console.log(req.signedCookies);
 
   res.send(`cart page ---  ${username}`);
 });
