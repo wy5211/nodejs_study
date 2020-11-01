@@ -5,18 +5,26 @@ const app = express();
 app.use(
   session({
     secret: "keyboard cat",
-    resave: false,
-    saveUninitialized: true,
-    cookie: { secure: true },
+    name: "express-session-set", // 修改session对应的cookie
+    resave: false, // 强制保存session即使他没有变化
+    saveUninitialized: true, // 强制将未初始化的session存储
+    cookie: { secure: false },
   })
 );
 
 app.get("/", (req, res) => {
-  res.send("home page");
+  const username = req.session.username;
+  console.log(req.session.username);
+  if (username) {
+    res.send(`${username} -- 登录`);
+  } else {
+    res.send("没有登录");
+  }
 });
 
 app.get("/login", (req, res) => {
-  res.send("执行登录");
+  req.session.username = "wangyang";
+  res.send("登录");
 });
 
 app.get("/logout", (req, res) => {

@@ -30,7 +30,25 @@
 > cookie 加密
 
 ```js
+
+  /*
+    maxAge?: number;  过期时间/设置时长(毫秒)
+    signed?: boolean; 是否加密(默认false)
+    expires?: Date;   过期时间/设置data
+    httpOnly?: boolean; 设置为true js 无法获取cookie,只能在服务端操作
+    path?: string;    设置可以获取cookie 的path
+    domain?: string;  设置二级域名, eg: 设置 .wy.com 时, a.wy.com & b.wy.com 都可以访问cookie
+    secure?: boolean; 设置为 true 只有 https 可以设置/获取cookie
+    encode?: (val: string) => string;
+    sameSite?: boolean | 'lax' | 'strict' | 'none';
+   */
+
   1. app.use(cookieParser('设置加密字符串'));
-  2. 设置cookie res.cookie("username", "王阳", { signed: true });
+  2. 设置cookie res.cookie("key", "value", { signed: true });
   3. 获取cookie req.signedCookies;
 ```
+
+### demo06
+
+- express-session
+  > cookie 保存在客户端浏览器中, session 保存在服务器上
