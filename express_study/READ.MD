@@ -52,3 +52,7 @@
 
 - express-session
   > cookie 保存在客户端浏览器中, session 保存在服务器上
+
+### demo07
+
+- connect-ssession 将 session 保存在数据库里面, 实现数据共享

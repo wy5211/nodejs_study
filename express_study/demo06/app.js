@@ -13,8 +13,8 @@ app.use(
 );
 
 app.get("/", (req, res) => {
-  const username = req.session.username;
-  console.log(req.session.username);
+  const { username } = req.session;
+  console.log(req.session);
   if (username) {
     res.send(`${username} -- 登录`);
   } else {
