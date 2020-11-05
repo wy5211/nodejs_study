@@ -34,3 +34,7 @@
   2. 设置cookie res.cookie("username", "王阳", { signed: true });
   3. 获取cookie req.signedCookies;
 ```
+
+### demo06
+
+- express-session
