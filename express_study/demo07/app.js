@@ -1,5 +1,6 @@
 const express = require("express");
 const session = require("express-session");
+const MongoStore = require("connect-mongo")(session);
 const app = express();
 
 app.use(
@@ -9,6 +10,10 @@ app.use(
     resave: false, // 强制保存session即使他没有变化
     saveUninitialized: true, // 强制将未初始化的session存储
     cookie: { secure: false },
+    store: new MongoStore({
+      url: "mongodb://127.0.0.1:27017/shop",
+      touchAfter: 24 * 3600, // 24 小时内只更新一次session,除非改变session
+    }),
   })
 );
 
