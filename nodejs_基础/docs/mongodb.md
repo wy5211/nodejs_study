@@ -16,6 +16,10 @@
 - db.dropDatabase() 删除数据库
 - db.[user].drop() 删除 user 这个集合
 
+### 新建集合
+
+- db.createCollection('users')
+
 ### 条件查找
 
 - db.[user].find({'age': 18}) 查找 age 为 18 的
