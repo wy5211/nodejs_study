@@ -1,4 +1,4 @@
-const userModel = require("./model/Schema/user");
+const userModel = require('./model/Schema/user');
 
 userModel.find((err, data) => {
   if (err) {
