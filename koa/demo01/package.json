@@ -1,0 +1,21 @@
+{
+  "dependencies": {
+    "@koa/router": "^10.0.0",
+    "ejs": "^3.1.5",
+    "koa": "^2.13.0",
+    "koa-bodyparser": "^4.3.0",
+    "koa-static": "^5.0.0",
+    "koa-views": "^6.3.1"
+  },
+  "name": "demo01",
+  "version": "1.0.0",
+  "main": "demo01.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
