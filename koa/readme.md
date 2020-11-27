@@ -24,6 +24,11 @@
 - ctx.cookies.get('name')
 - koa cookie 不支持中文 cookie， 需要用 new Buffer 转一下
 
+> koa-session
+
+- ctx.session.name = 'wangyang'
+- ctx.session.name
+
 ### demo02
 
 > app.js
